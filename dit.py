@@ -6,5 +6,5 @@ else:
   print("DONE!!!!!!")
   print("JENKINS")
 
-ech "why"
+echo "FIXED IT !!!!"
   
