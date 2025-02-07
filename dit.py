@@ -6,5 +6,5 @@ else:
   print("DONE!!!!!!")
   print("JENKINS")
 
-echo "FIXED IT !!!!"
+print("FIXED IT!!!")
   
