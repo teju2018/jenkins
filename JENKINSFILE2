@@ -4,7 +4,13 @@ pipeline{
         stage("build"){
             steps{
                 sh 'hostnamectl'
-                sh 'touch /tmp/file1.txt'
+                
+            }
+        }
+         stage("Test"){
+            steps{
+                
+                echo 'Done.....!'
             }
         }
     }
