@@ -1,0 +1,39 @@
+pipeline{
+    agent any
+    stages{
+        stage("BUILD"){
+            steps {
+                echo 'Build in prograss'
+            }
+        }
+        stage("Unit tests"){
+            steps {
+                echo 'Running unit tests'
+            }
+        }
+        stage("Deploy"){
+            steps {
+                echo 'Depolying build'
+            }
+        }
+        stage("regression test"){
+            steps {
+                parallel(
+                    chrome :{
+                        echo "Running e2e tests on chrome"
+                    },
+                    firefox:{
+                        echo "running e2e tests on firefox"
+                    },
+                    safari :{
+                        echo "running e2e tests on safari"
+                    }
+
+                )
+                echo 'Running E2E tests'
+            }
+        }
+
+    }
+
+}
