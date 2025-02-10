@@ -1,0 +1,24 @@
+pipeline{
+    agent any 
+    stages{
+        stage("build"){
+            steps{
+                sh 'echo Compiling code........'
+            }
+        }
+    }
+    post{
+        always{
+            echo 'ALWAYS'
+        }
+        success{
+            echo 'Only on succes'
+        }
+        failure{
+            echo 'only if run is unstable'
+        }
+        changed{
+            echo 'only is status changed from sucess to failure or vice versa w.r.t last run'
+        }
+    }
+}
