@@ -1,0 +1,24 @@
+pipeline{
+    agent any 
+    stages{
+        stage("build"){
+            steps{
+                sh 'hostnamectl'
+            }
+        }
+    }
+    post{
+        always{
+            echo 'ALWAYS'
+        }
+        success{
+            echo 'Only on succes'
+        }
+        failure{
+            echo 'Only on failure'
+        }
+        changed{
+            echo 'only is status changed from sucess to failure or vice versa w.r.t last run'
+        }
+    }
+}
