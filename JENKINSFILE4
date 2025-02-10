@@ -1,39 +1,39 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("BUILD"){
+    stages {
+        stage("BUILD") {
             steps {
-                echo 'Build in prograss'
+                echo 'Build in progress'
             }
         }
-        stage("Unit tests"){
+        stage("Unit tests") {
             steps {
                 echo 'Running unit tests'
             }
         }
-        stage("Deploy"){
+        stage("Deploy") {
             steps {
-                echo 'Depolying build'
+                echo 'Deploying build'
             }
         }
-        stage("regression test"){
-            steps {
-                parallel(
-                    chrome :{
-                        echo "Running e2e tests on chrome"
-                    },
-                    firefox:{
-                        echo "running e2e tests on firefox"
-                    },
-                    safari :{
-                        echo "running e2e tests on safari"
+        stage("Regression Test") {
+            parallel {
+                stage("Chrome") {
+                    steps {
+                        echo "Running E2E tests on Chrome"
                     }
-
-                )
-                echo 'Running E2E tests'
+                }
+                stage("Firefox") {
+                    steps {
+                        echo "Running E2E tests on Firefox"
+                    }
+                }
+                stage("Safari") {
+                    steps {
+                        echo "Running E2E tests on Safari"
+                    }
+                }
             }
         }
-
     }
-
 }
