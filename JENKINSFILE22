@@ -53,12 +53,15 @@ pipeline{
               }
             }  
         }
-/*
+
         stage("terraform destory"){
             steps{
+                dir(TF_WORKING_DIR){
+
                 sh 'terraform destroy --auto-approve'
             }
         }
-       */
+       
     }
+}
 }
