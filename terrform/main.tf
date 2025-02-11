@@ -4,13 +4,12 @@ provider "google" {
   region      = "us-central1"
   zone        = "us-central1-a"
 }
-locals {
-  instance_name = "${terraform.workspace}-instance"
-}
+
+
 resource "google_compute_instance" "my-instance" {
-  name         = var.name
-  zone         = var.zone
-  machine_type = var.machine_type
+  name         = "myone1"
+  zone         = "us-central-a"
+  machine_type = "e2-micro"
   boot_disk {
     initialize_params {
       image = "centos-stream-9"
@@ -21,8 +20,5 @@ resource "google_compute_instance" "my-instance" {
     access_config {
 
     }
-  }
-  labels = {
-    name = local.instance_name
   }
 }
