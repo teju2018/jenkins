@@ -57,7 +57,7 @@ pipeline{
        stage("terraform destroy"){
            steps{
                dir(TF_WORKING_DIR) {
-               sh 'terraform destroy --auto-approve -var-file="terraform.tfvars"'
+               sh 'terraform destroy --auto-approve -var-file="simple.tfvars"'
         }
     }
 }
