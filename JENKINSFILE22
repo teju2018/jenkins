@@ -41,7 +41,7 @@ pipeline{
         stage("terraform plan"){
             steps{
                 dir(TF_WORKING_DIR){
-                sh 'terraform plan '
+                sh 'terraform plan -var-file simple.tfvars '
                   }
             }      
             
@@ -49,7 +49,7 @@ pipeline{
         stage("terraform apply"){
             steps{
                 dir(TF_WORKING_DIR){
-                sh 'terraform apply   --auto-approve'
+                sh 'terraform apply -var-file simple.tfvars  --auto-approve'
               }
             }  
         }
