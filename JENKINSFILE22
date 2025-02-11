@@ -1,0 +1,64 @@
+pipeline{
+    agent any
+    environment {
+     GOOGLE_APPLICATION_CREDENTIALS = credentials('okay')
+     TF_WORKING_DIR='terrform'
+    }
+    tools{
+        terraform 'terraform'
+    }
+    stages{
+        stage('checkout from Git'){
+            steps{
+                git branch: 'main', credentialsId: 'c225b55b-38a9-4418-9dca-9e8bb0208165', url: 'https://github.com/teju2018/jenkins.git'            }
+        }
+        
+    
+    
+        stage("terraform init"){
+            steps{
+                dir(TF_WORKING_DIR){
+                sh 'terraform init'
+                    }
+                
+            }
+        }
+        stage("terraform fmt"){
+            steps{
+                dir(TF_WORKING_DIR){
+                sh 'terraform fmt'
+                }
+            }
+
+        }
+        stage("terraform validate"){
+            steps{
+                dir(TF_WORKING_DIR){
+                sh 'terraform validate'
+                    }
+            }
+        }
+        stage("terraform plan"){
+            steps{
+                dir(TF_WORKING_DIR){
+                sh 'terraform plan '
+                  }
+            }      
+            
+        }
+        stage("terraform apply"){
+            steps{
+                dir(TF_WORKING_DIR){
+                sh 'terraform apply   --auto-approve'
+              }
+            }  
+        }
+/*
+        stage("terraform destory"){
+            steps{
+                sh 'terraform destroy --auto-approve'
+            }
+        }
+       */
+    }
+}
