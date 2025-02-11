@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file("keys.json")
+  
   project     = "ferrous-upgrade-446608-k0"
   region      = "us-central1"
   zone        = "us-central1-a"
