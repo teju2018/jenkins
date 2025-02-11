@@ -12,7 +12,14 @@ pipeline{
             steps{
                 git branch: 'main', credentialsId: 'c225b55b-38a9-4418-9dca-9e8bb0208165', url: 'https://github.com/teju2018/jenkins.git'            }
         }
-        
+
+        stage("terraform destroy"){
+            steps{
+                dir(TF_WORKING_DIR) {
+                sh 'terraform destroy --auto-approve -var-file="simple.tfvars"'
+        }
+    }
+}    
     
     
         stage("terraform init"){
@@ -54,13 +61,7 @@ pipeline{
             }  
         }
 
-       stage("terraform destroy"){
-           steps{
-               dir(TF_WORKING_DIR) {
-               sh 'terraform destroy --auto-approve -var-file="simple.tfvars"'
-        }
-    }
-}
+       
 
 }
 }
