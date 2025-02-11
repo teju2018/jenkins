@@ -1,5 +1,4 @@
 provider "google" {
-  credentials = "1489f3c191f5c86990916be694a86dcf5e504ccd"
   project     = "ferrous-upgrade-446608-k0"
   region      = "us-central1"
   zone        = "us-central1-a"
