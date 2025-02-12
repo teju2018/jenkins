@@ -20,7 +20,7 @@ pipeline {
             parallel {
                 stage("Chrome") {
                     steps {
-                        echo "Running E2E tests on Chrome"
+                        echo "Running e2e tests on Chrome"
                     }
                 }
                 stage("Firefox") {
