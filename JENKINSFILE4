@@ -13,7 +13,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                echo 'Deploying build'
+                echo 'Deploying build in Softility'
             }
         }
         stage("Regression Test") {
