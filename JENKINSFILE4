@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage("BUILD") {
+        stage("PYTHON") {
             steps {
-                echo 'Build in progress'
+                sh 'python333 dit.py'
             }
         }
         stage("Unit tests") {
